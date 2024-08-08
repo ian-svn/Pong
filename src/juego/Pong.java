@@ -18,6 +18,7 @@ public class Pong {
     private JFrame frame;
     JPanel BarraIzq = new JPanel();
     JPanel BarraDer = new JPanel();
+    Pelota pelota = new Pelota();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -53,15 +54,16 @@ public class Pong {
         BarraDer.setBounds(755, 211, 10, 70);
         frame.getContentPane().add(BarraDer);
         
-        JComponentOval componentOval = new JComponentOval(30);
-        componentOval.setBackground(new Color(255, 255, 255));
-        componentOval.setBounds(385, 237, 17, 17);
-        frame.getContentPane().add(componentOval);
+        Pelota pelota_1 = new Pelota();
+        pelota_1.setBounds(385, 246, 10, 10);
+        frame.getContentPane().add(pelota_1);
 
         int borderThickness = 2;
         Color borderColor = Color.GRAY;
         Border border = BorderFactory.createMatteBorder(borderThickness, 0, 0, 0, borderColor);
 
+        
+        
         frame.setVisible(true);
 
         frame.addKeyListener(new KeyAdapter() {
@@ -81,25 +83,6 @@ public class Pong {
                         BarraIzq.setBounds(20, y, 10, 70);
                     }
                 }
-
-                if (e.getKeyCode() == 38) {
-                    if (BarraDer.getY() > 12) {
-                        int y = BarraDer.getY();
-                        y -= 20;
-                        BarraDer.setBounds(755, y, 10, 70);
-                    }
-                }
-                if (e.getKeyCode() == 40) {
-                    if (BarraDer.getY() < 520 - 170) {
-                        int y = BarraDer.getY();
-                        y += 20;
-                        BarraDer.setBounds(755, y, 10, 70);
-                    }
-                }
-            }
-        });
-        
-        
-    
+        }});
     }
 }
